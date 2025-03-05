@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "../ui/card";
-import { Input } from "../ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../ui/select";
+import { Card, CardContent } from "./ui/card";
+import { Input } from "./ui/input";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
 
 export default function ProteinCalculator() {
   const [weight, setWeight] = useState(70);
