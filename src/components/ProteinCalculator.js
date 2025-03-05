@@ -63,7 +63,12 @@ export default function ProteinCalculator() {
               </SelectContent>
             </Select>
           </div>
-          
+
+<div className="mb-4">
+  <label className="block mb-1">Servings per Day</label>
+  <Input type="number" value={servings} min={4} max={8} onChange={(e) => setServings(Number(e.target.value))} />
+</div>
+                
           <div className="mt-4 p-4 bg-gray-200 rounded-lg text-center">
             <p className="text-lg font-semibold">Protein Intake</p>
             <p><strong>{proteinPerDay.toFixed(1)}</strong> g per day</p>
