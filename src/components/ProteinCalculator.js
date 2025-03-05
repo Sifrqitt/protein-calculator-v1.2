@@ -1,9 +1,7 @@
-"use client";
-
 import { useState } from "react";
-import { Card, CardContent } from "./ui/card";
-import { Input } from "./ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 export default function ProteinCalculator() {
   const [weight, setWeight] = useState(70);
@@ -63,23 +61,25 @@ export default function ProteinCalculator() {
               </SelectContent>
             </Select>
           </div>
-
-<div className="mb-4">
-  <label className="block mb-1">Servings per Day</label>
-  <Input
-    type="number"
-    value={servings}
-    min={4}
-    max={8}
-    onChange={(e) => {
-      let value = Number(e.target.value);
-      if (value < 4) value = 4;
-      if (value > 8) value = 8;
-      setServings(value);
-    }}
-  />
-</div>
-                
+          
+          <div className="mb-4">
+            <label className="block mb-1">Servings per Day</label>
+            <div className="flex justify-between mb-2 px-2 text-sm font-bold text-gray-500">
+              {[4, 5, 6, 7, 8].map(num => (
+                <span key={num} className={`${num === servings ? 'text-blue-600' : ''}`}>{num}</span>
+              ))}
+            </div>
+            <input 
+              type="range" 
+              min="4" 
+              max="8" 
+              value={servings} 
+              onChange={(e) => setServings(Number(e.target.value))} 
+              className="w-full h-2 rounded-lg appearance-none bg-gray-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+              style={{ accentColor: '#3b82f6' }}
+            />
+          </div>
+          
           <div className="mt-4 p-4 bg-gray-200 rounded-lg text-center">
             <p className="text-lg font-semibold">Protein Intake</p>
             <p><strong>{proteinPerDay.toFixed(1)}</strong> g per day</p>
