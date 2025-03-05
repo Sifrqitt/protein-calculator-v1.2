@@ -66,7 +66,18 @@ export default function ProteinCalculator() {
 
 <div className="mb-4">
   <label className="block mb-1">Servings per Day</label>
-  <Input type="number" value={servings} min={4} max={8} onChange={(e) => setServings(Number(e.target.value))} />
+  <Input
+    type="number"
+    value={servings}
+    min={4}
+    max={8}
+    onChange={(e) => {
+      let value = Number(e.target.value);
+      if (value < 4) value = 4;
+      if (value > 8) value = 8;
+      setServings(value);
+    }}
+  />
 </div>
                 
           <div className="mt-4 p-4 bg-gray-200 rounded-lg text-center">
